@@ -1,0 +1,211 @@
+:root {
+  --primary: #ff6b35;
+  --primary-hover: #e85a2a;
+  --bg-body: #f8f9fa;
+  --bg-card: #ffffff;
+  --header-bg: rgba(255, 255, 255, 0.85); /* Para o efeito de vidro */
+  --text-main: #2d3436;
+  --text-muted: #636e72;
+  --border-color: rgba(0, 0, 0, 0.05);
+  --shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  --header-height: 80px;
+}
+
+/* Estrutura Base */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.app-layout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--bg-body);
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+/* Header Profissional com Glassmorphism */
+.header {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  height: var(--header-height);
+  background: var(--header-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  z-index: 1000;
+  box-shadow: var(--shadow);
+}
+
+.header-container {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Logo Estilizada */
+/* Logo Estilizada - Limpeza Total */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none !important; /* Remove qualquer underline */
+  color: var(--text-main);
+  position: relative;
+  border: none !important;
+  outline: none !important;
+}
+
+/* Isso mata qualquer linha que o active tente criar na logo */
+.logo.active::after,
+.logo::after {
+  content: none !important;
+  display: none !important;
+}
+
+.logo-text {
+  font-size: 1.6rem;
+  font-weight: 800;
+  letter-spacing: -1px;
+  display: flex; /* Alinha o texto e o ponto perfeitamente */
+  align-items: baseline;
+}
+
+.logo-text .dot {
+  color: var(--primary);
+  display: inline-block;
+  line-height: 0; /* Impede que o ponto crie uma barra vertical */
+}
+
+.logo-icon {
+  font-size: 1.8rem;
+  transition: transform 0.3s ease;
+  line-height: 1;
+}
+
+.logo:hover .logo-icon {
+  transform: rotate(15deg) scale(1.1);
+}
+
+/* Navegação e Links */
+
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+
+.nav a {
+  text-decoration: none;
+  color: var(--text-muted);
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: all 0.2s ease;
+  position: relative;
+  padding: 8px 0;
+}
+
+.nav a:hover, 
+
+.nav a.active {
+  color: var(--primary);
+}
+
+/* Bolinha indicadora para link ativo */
+.nav a.active::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 5px;
+  height: 5px;
+  background: var(--primary);
+  border-radius: 50%;
+}
+
+.nav-divider {
+  width: 1px;
+  height: 24px;
+  background: var(--border-color);
+  margin: 0 5px;
+}
+
+/* Remove o contorno de foco ao clicar (estético) */
+.nav a:focus,
+.logo:focus,
+.btn-logout:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* Opcional: Mantém a acessibilidade para quem usa teclado (Tab), 
+   mas remove para quem usa o mouse */
+.nav a:focus-visible,
+.btn-logout:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 4px;
+}
+
+/* Botão Logout Profissional */
+.btn-logout {
+  background: #f8f9fa;
+  color: #ff4757;
+  border: 1px solid #ffeaea;
+  padding: 10px 22px;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-logout:hover {
+  background: #ff4757;
+  color: white;
+  border-color: #ff4757;
+  box-shadow: 0 4px 12px rgba(255, 71, 87, 0.2);
+}
+
+/* Área de Conteúdo Principal */
+.main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 40px;
+}
+
+/* Footer */
+.footer {
+  background: var(--bg-card);
+  padding: 2.5rem;
+  text-align: center;
+  border-top: 1px solid var(--border-color);
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+/* Responsividade Mobile */
+@media (max-width: 768px) {
+  .header-container { padding: 0 20px; }
+  .container { padding: 1.5rem 20px; }
+  .nav { gap: 15px; }
+  .nav a { font-size: 0.85rem; }
+  .nav-divider { display: none; }
+}

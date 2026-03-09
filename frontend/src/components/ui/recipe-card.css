@@ -1,0 +1,75 @@
+.recipe-card {
+  background: white;
+  border-radius: 16px; /* Bordas mais arredondadas são tendência */
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #f1f2f6; /* Borda sutil para definir o card */
+}
+
+/* Efeito de levitação profissional */
+.recipe-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.1);
+}
+
+.recipe-card-image {
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+}
+
+.recipe-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+/* Zoom suave na imagem ao passar o mouse */
+.recipe-card:hover .recipe-card-image img {
+  transform: scale(1.1);
+}
+
+.recipe-card-content {
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.recipe-card h3 {
+  margin: 0;
+  font-size: 1.15rem;
+  color: #2d3436;
+  font-weight: 700;
+
+  /* Suporte para truncamento de múltiplas linhas */
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* Número de linhas antes do "..." */
+  -webkit-box-orient: vertical;  
+  overflow: hidden;
+
+  /* Propriedade padrão (para compatibilidade futura) */
+  line-clamp: 2; 
+}
+
+.recipe-card p {
+  font-size: 0.85rem;
+  color: #636e72;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.recipe-card p span {
+  font-weight: 400;
+  color: #b2bec3;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 0.5px;
+}

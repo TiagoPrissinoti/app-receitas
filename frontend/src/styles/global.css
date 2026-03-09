@@ -1,0 +1,65 @@
+/* Reset e Definições de Base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  /* Suavização de scroll para links internos */
+  scroll-behavior: smooth;
+}
+
+html, body, #root {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  background-color: #f8f9fa;
+  color: #2d3436;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  
+  /* Melhora a renderização das fontes em navegadores modernos */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  
+  line-height: 1.5;
+}
+
+/* Links */
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+/* Removendo outlines chatos mas mantendo acessibilidade no teclado */
+button:focus, a:focus {
+  outline: 2px solid #ff6b3550;
+  outline-offset: 2px;
+}
+
+/* Imagens responsivas por padrão */
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* Scrollbar personalizada (opcional, mas dá um toque pro) */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #ff6b35;
+}
