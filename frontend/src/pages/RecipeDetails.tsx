@@ -38,7 +38,7 @@ export function RecipeDetails() {
   const ingredientsArray = recipe.ingredients.split('\n').filter(i => i.trim() !== '')
   const stepsArray = recipe.description.split('\n').filter(s => s.trim() !== '')
 
-  const imageUrl = `http://localhost:3333/uploads/${recipe.image}`;
+  const imageUrl = `http://api-receitas-wtb0.onrender.com/uploads/${recipe.image}`;
 
   return (
     <div className="recipe-details-wrapper fade-in">

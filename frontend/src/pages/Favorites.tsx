@@ -56,7 +56,7 @@ export function Favorites() {
               {/* Imagem da Receita */}
               {recipe.image && (
                 <img
-                  src={`http://localhost:3333/uploads/${recipe.image}`}
+                  src={`http://api-receitas-wtb0.onrender.com/uploads/${recipe.image}`}
                   alt={recipe.title}
                   className="recipe-image"
                   onClick={() => navigate(`/recipes/${recipe.id}`)}
