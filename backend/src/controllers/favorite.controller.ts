@@ -1,11 +1,12 @@
-import { Request, Response } from 'express'
+import { Response } from 'express'
 import { prisma } from '../lib/prisma'
+import { RequestWithUser } from '../types/auth-request'
 
 /* =======================
    TOGGLE FAVORITE
 ======================= */
 export async function toggleFavorite(
-  req: Request,
+  req: RequestWithUser,
   res: Response
 ) {
   const recipeId = String(req.params.id)
@@ -57,7 +58,7 @@ export async function toggleFavorite(
    LIST FAVORITES
 ======================= */
 export async function listFavorites(
-  req: Request,
+  req: RequestWithUser,
   res: Response
 ) {
   const userId = req.user!.sub

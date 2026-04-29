@@ -1,7 +1,8 @@
-import { Request, Response, NextFunction } from 'express'
+import { Response, NextFunction } from 'express'
+import { RequestWithUser } from '../types/auth-request'
 
 export function requireRole(role: 'USER' | 'ADMIN') {
-  return (req: Request, res: Response, next: NextFunction) => {
+  return (req: RequestWithUser, res: Response, next: NextFunction) => {
     if (!req.user) {
       return res.status(401).json({ message: 'Não autenticado' })
     }

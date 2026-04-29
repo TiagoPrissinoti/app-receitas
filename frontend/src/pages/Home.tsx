@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { api } from '../api/api'
+import { api, getUploadUrl } from '../api/api'
 import '../styles/home.css'
 
 interface Recipe {
@@ -55,7 +55,7 @@ export function Home() {
             >
               <div className="image-wrapper">
                 <img
-                  src={`http://api-receitas-wtb0.onrender.com/uploads/${recipe.image}`}
+                  src={getUploadUrl(recipe.image)}
                   alt={recipe.title}
                   loading="lazy"
                 />

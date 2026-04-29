@@ -1,7 +1,12 @@
 import axios from 'axios'
 
+const envApiUrl = import.meta.env.VITE_API_URL?.trim()
+const apiBaseUrl = envApiUrl
+  ? envApiUrl.replace(/\/+$/, '')
+  : 'http://localhost:3333'
+
 export const api = axios.create({
-  baseURL:"https://api-receitas-wtb0.onrender.com"
+  baseURL: apiBaseUrl,
 })
 
 api.interceptors.request.use(config => {
@@ -13,3 +18,8 @@ api.interceptors.request.use(config => {
 
   return config
 })
+
+export function getUploadUrl(image?: string) {
+  if (!image) return ''
+  return `${apiBaseUrl}/uploads/${image}`
+}

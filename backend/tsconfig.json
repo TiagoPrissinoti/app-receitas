@@ -19,9 +19,13 @@
 
     "strict": true,
     "skipLibCheck": true
+    
   },
 
- "include": ["src"],
-  "exclude": ["node_modules", "prisma"]
-
+  "include": ["src"],
+  "exclude": ["node_modules", "prisma"],
+  "ts-node": {
+    "files": true
+  }
 }
+

@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-import { api } from '../api/api'
+import { api, getUploadUrl } from '../api/api'
 import '../styles/recipe-details.css'
 
 interface Recipe {
@@ -38,7 +38,7 @@ export function RecipeDetails() {
   const ingredientsArray = recipe.ingredients.split('\n').filter(i => i.trim() !== '')
   const stepsArray = recipe.description.split('\n').filter(s => s.trim() !== '')
 
-  const imageUrl = `http://api-receitas-wtb0.onrender.com/uploads/${recipe.image}`;
+  const imageUrl = getUploadUrl(recipe.image)
 
   return (
     <div className="recipe-details-wrapper fade-in">

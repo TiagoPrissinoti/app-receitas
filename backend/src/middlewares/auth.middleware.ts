@@ -1,5 +1,6 @@
-import { Request, Response, NextFunction } from 'express'
+import { Response, NextFunction } from 'express'
 import jwt from 'jsonwebtoken'
+import { RequestWithUser } from '../types/auth-request'
 
 interface JwtPayload {
   sub: string
@@ -10,7 +11,7 @@ interface JwtPayload {
    AUTH OBRIGATÓRIO
 ======================= */
 export function authMiddleware(
-  req: Request,
+  req: RequestWithUser,
   res: Response,
   next: NextFunction
 ) {
@@ -39,7 +40,7 @@ export function authMiddleware(
    AUTH OPCIONAL
 ======================= */
 export function authMiddlewareOptional(
-  req: Request,
+  req: RequestWithUser,
   _res: Response,
   next: NextFunction
 ) {

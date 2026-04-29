@@ -1,6 +1,7 @@
-import { Request, Response } from 'express'
+import { Response } from 'express'
 import { z } from 'zod'
 import { prisma } from '../lib/prisma'
+import { RequestWithUser } from '../types/auth-request'
 
 /* =======================
    SCHEMAS (SEM IMAGE)
@@ -20,7 +21,7 @@ const updateRecipeSchema = createRecipeSchema.partial()
    CREATE (COM IMAGEM)
 ======================= */
 
-export async function createRecipe(req: Request, res: Response) {
+export async function createRecipe(req: RequestWithUser, res: Response) {
   try {
     const data = createRecipeSchema.parse(req.body)
 
@@ -44,7 +45,7 @@ export async function createRecipe(req: Request, res: Response) {
    LIST ALL (COM FAVORITO + IMAGE)
 ======================= */
 
-export async function listRecipes(req: Request, res: Response) {
+export async function listRecipes(req: RequestWithUser, res: Response) {
   const userId = req.user?.sub
   const search = req.query.search?.toString()
 
@@ -102,7 +103,7 @@ export async function listRecipes(req: Request, res: Response) {
    LIST MY RECIPES
 ======================= */
 
-export async function myRecipes(req: Request, res: Response) {
+export async function myRecipes(req: RequestWithUser, res: Response) {
   const recipes = await prisma.recipe.findMany({
     where: {
       userId: req.user!.sub,
@@ -119,7 +120,7 @@ export async function myRecipes(req: Request, res: Response) {
    UPDATE (COM IMAGEM)
 ======================= */
 
-export async function updateRecipe(req: Request, res: Response) {
+export async function updateRecipe(req: RequestWithUser, res: Response) {
   try {
     const id = String(req.params.id)
     const data = updateRecipeSchema.parse(req.body)
@@ -156,7 +157,7 @@ export async function updateRecipe(req: Request, res: Response) {
    DELETE
 ======================= */
 
-export async function deleteRecipe(req: Request, res: Response) {
+export async function deleteRecipe(req: RequestWithUser, res: Response) {
   const id = String(req.params.id)
 
   const recipe = await prisma.recipe.findUnique({
@@ -182,7 +183,7 @@ export async function deleteRecipe(req: Request, res: Response) {
    GET BY ID (COM IMAGE + FAVORITO)
 ======================= */
 
-export async function getRecipeById(req: Request, res: Response) {
+export async function getRecipeById(req: RequestWithUser, res: Response) {
   const id = String(req.params.id)
   const userId = req.user?.sub
 

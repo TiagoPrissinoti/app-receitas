@@ -16,12 +16,12 @@ export default function Header() {
       <div className="header-container">
        <Link to="/home" className="logo">
         <span className="logo-icon">🍲</span>
-        <span className="logo-text">Receitas.</span>
+        <span className="logo-text">Cook Share</span>
         </Link>
 
         <nav className="nav">
           <NavLink to="/home" className={({ isActive }) => isActive ? 'active' : ''}>Home</NavLink>
-          <NavLink to="/recipes" className={({ isActive }) => isActive ? 'active' : ''}>Receitas</NavLink>
+          <NavLink to="/recipes" end className={({ isActive }) => isActive ? 'active' : ''}>Receitas</NavLink>
           <NavLink to="/favorites" className={({ isActive }) => isActive ? 'active' : ''}>Favoritos</NavLink>
           <NavLink to="/recipes/my" className={({ isActive }) => isActive ? 'active' : ''}>Minhas</NavLink>
           

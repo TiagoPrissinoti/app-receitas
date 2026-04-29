@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { api } from '../api/api'
+import { api, getUploadUrl } from '../api/api'
 import { useAuth } from '../auth/AuthContext'
 import '../styles/recipes.css'
 
@@ -64,7 +64,7 @@ export function MyRecipes() {
             <div key={recipe.id} className="recipe-card">
               {recipe.image && (
                 <img
-                  src={`http://api-receitas-wtb0.onrender.com/uploads/${recipe.image}`}
+                  src={getUploadUrl(recipe.image)}
                   alt={recipe.title}
                   className="recipe-image"
                   onClick={() => navigate(`/recipes/${recipe.id}`)}

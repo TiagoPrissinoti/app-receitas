@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { api } from '../api/api'
+import { api, getUploadUrl } from '../api/api'
 import '../styles/recipes.css'
 
 interface Recipe {
@@ -56,7 +56,7 @@ export function Favorites() {
               {/* Imagem da Receita */}
               {recipe.image && (
                 <img
-                  src={`http://api-receitas-wtb0.onrender.com/uploads/${recipe.image}`}
+                  src={getUploadUrl(recipe.image)}
                   alt={recipe.title}
                   className="recipe-image"
                   onClick={() => navigate(`/recipes/${recipe.id}`)}
