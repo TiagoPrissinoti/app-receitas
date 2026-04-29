@@ -14,9 +14,9 @@ export default function Header() {
   return (
     <header className="header">
       <div className="header-container">
-       <Link to="/home" className="logo">
-        <span className="logo-icon">🍲</span>
-        <span className="logo-text">Cook Share</span>
+        <Link to="/home" className="logo">
+          <span className="logo-icon">CS</span>
+          <span className="logo-text">Cook Share</span>
         </Link>
 
         <nav className="nav">
@@ -24,9 +24,9 @@ export default function Header() {
           <NavLink to="/recipes" end className={({ isActive }) => isActive ? 'active' : ''}>Receitas</NavLink>
           <NavLink to="/favorites" className={({ isActive }) => isActive ? 'active' : ''}>Favoritos</NavLink>
           <NavLink to="/recipes/my" className={({ isActive }) => isActive ? 'active' : ''}>Minhas</NavLink>
-          
+
           <div className="nav-divider"></div>
-          
+
           <button className="btn-logout" onClick={handleLogout}>
             Sair
           </button>

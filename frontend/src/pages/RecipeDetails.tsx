@@ -29,7 +29,7 @@ export function RecipeDetails() {
       const response = await api.get(`/recipes/${id}`)
       setRecipe(response.data)
     } catch (error) {
-      console.error("Erro ao carregar receita")
+      console.error('Erro ao carregar receita')
     }
   }
 
@@ -37,25 +37,16 @@ export function RecipeDetails() {
 
   const ingredientsArray = recipe.ingredients.split('\n').filter(i => i.trim() !== '')
   const stepsArray = recipe.description.split('\n').filter(s => s.trim() !== '')
-
   const imageUrl = getUploadUrl(recipe.image)
 
   return (
     <div className="recipe-details-wrapper fade-in">
       <div className="details-header">
-        {/* Adicionado style inline para o efeito de fundo (Blur) */}
-        <div 
-          className="details-image" 
-          style={{ backgroundImage: `url(${imageUrl})` }}
-        >
-          <img
-            src={imageUrl}
-            alt={recipe.title}
-          />
+        <div className="details-image" style={{ backgroundImage: `url(${imageUrl})` }}>
+          <img src={imageUrl} alt={recipe.title} />
           <div className="image-overlay"></div>
         </div>
-        
-        {/* Este card agora tem z-index: 10 no CSS */}
+
         <div className="details-title-card">
           <h1>{recipe.title}</h1>
           <div className="details-meta">

@@ -1,4 +1,3 @@
-/* Definição de Animações */
 @keyframes fadeIn {
   from { opacity: 0; }
   to { opacity: 1; }
@@ -17,98 +16,80 @@
   animation: slideUp 0.6s ease-out both;
 }
 
-/* Layout Geral */
-/* ... manter animações anteriores ... */
-
 .recipe-details-wrapper {
   max-width: 900px;
   margin: 0 auto;
   padding-bottom: 60px;
 }
 
-/* No seu arquivo recipe-details.css */
-
 .details-header {
   position: relative;
-  margin-bottom: 140px; /* Aumentado para dar espaço ao card */
+  margin-bottom: 140px;
 }
 
 .details-image {
-  height: 450px;
+  height: clamp(250px, 46vh, 390px);
   width: 100%;
   border-radius: 0 0 32px 32px;
-  /* Removemos o overflow: hidden daqui e passamos para um container interno se necessário */
   overflow: hidden;
   position: relative;
   background-color: #1a1a1a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-/* Camada de Blur (Fundo) - Aumentei o escurecimento para dar contraste */
 .details-image::before {
-  content: "";
+  content: '';
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  inset: 0;
   background-image: inherit;
   background-size: cover;
   background-position: center;
-  filter: blur(15px) brightness(0.5); /* Blur um pouco menor para não virar um borrão cinza */
+  filter: blur(10px) brightness(0.42);
+  transform: scale(1.06);
   z-index: 1;
 }
 
-/* Imagem Principal - O SEGREDO DA NITIDEZ */
 .details-image img {
-  width: 100%;
-  height: 100%;
   position: relative;
   z-index: 2;
-  
-  /* Mudamos para cover para garantir que a imagem preencha com força total */
-  object-fit: cover; 
-  object-position: center;
-
-  /* Força o navegador a renderizar com a melhor qualidade possível */
-  image-rendering: -webkit-optimize-contrast;
-  image-rendering: auto;
-  
-  /* Filtro sutil de nitidez e contraste para compensar fotos ruins */
-  filter: contrast(1.05) saturate(1.05); 
+  width: auto;
+  height: auto;
+  max-width: min(92%, 760px);
+  max-height: 84%;
+  object-fit: contain;
+  border-radius: 16px;
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.32);
+  border: 1px solid rgba(255, 255, 255, 0.28);
 }
 
 .image-overlay {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  /* Gradiente mais pesado em cima e embaixo para focar no centro da foto */
+  inset: 0;
   background: linear-gradient(
-    to bottom, 
-    rgba(0,0,0,0.3) 0%, 
-    transparent 40%, 
-    transparent 60%, 
-    rgba(0,0,0,0.6) 100%
+    to bottom,
+    rgba(0, 0, 0, 0.12) 0%,
+    rgba(0, 0, 0, 0.05) 45%,
+    rgba(0, 0, 0, 0.26) 100%
   );
   z-index: 3;
+  pointer-events: none;
 }
-/* O CARD DE TÍTULO - RESOLVE O PROBLEMA DE FICAR EMBAIXO */
+
 .details-title-card {
   position: absolute;
-  bottom: -90px; 
+  bottom: -90px;
   left: 50%;
   transform: translateX(-50%);
   background: white;
   width: 92%;
   padding: 35px 20px;
   border-radius: 24px;
-  box-shadow: 0 15px 40px rgba(0,0,0,0.18);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.18);
   text-align: center;
-  z-index: 10; /* Valor alto para garantir que fique no topo de tudo */
+  z-index: 10;
 }
-
-/* ... restante do código (meta-badge, content, etc) permanece igual ... */
 
 .details-title-card h1 {
   font-size: 2.2rem;
@@ -132,7 +113,6 @@
   color: #636e72;
 }
 
-/* Conteúdo Principal */
 .details-content {
   padding: 0 20px;
   display: flex;
@@ -146,13 +126,12 @@
   color: #2d3436;
 }
 
-/* Estilo da Lista de Ingredientes */
 .ingredients-list {
   list-style: none;
   background: white;
   padding: 24px;
   border-radius: 18px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
 }
 
 .ingredients-list li {
@@ -171,7 +150,6 @@
   border-radius: 50%;
 }
 
-/* Estilo do Modo de Preparo */
 .steps-list {
   display: flex;
   flex-direction: column;
@@ -184,7 +162,7 @@
   background: white;
   padding: 20px;
   border-radius: 18px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
   transition: transform 0.2s ease;
 }
 
@@ -210,13 +188,15 @@
   line-height: 1.6;
 }
 
-/* Delay nas animações das seções */
 .ingredients-section { animation-delay: 0.2s; }
 .description-section { animation-delay: 0.4s; }
 
-/* Mobile */
 @media (max-width: 600px) {
   .details-title-card h1 { font-size: 1.6rem; }
-  .details-image { height: 300px; }
+  .details-image { height: 260px; }
+  .details-image img {
+    max-width: 94%;
+    max-height: 80%;
+  }
   .details-header { margin-bottom: 100px; }
 }
