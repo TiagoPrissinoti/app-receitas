@@ -69,7 +69,7 @@ export function Home() {
                 <h3>{recipe.title}</h3>
                 <div className="info-footer">
                   <span className="servings">{recipe.servings} porções</span>
-                  <span className="view-recipe">Ver mais</span>
+                  <button type="button" className="view-recipe">Ver mais</button>
                 </div>
               </div>
             </article>
@@ -83,3 +83,4 @@ export function Home() {
     </div>
   )
 }
+
