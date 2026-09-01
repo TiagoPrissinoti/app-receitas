@@ -48,7 +48,11 @@ A aplicação conta com autenticação de usuários, upload de imagens e uma arq
 
 # 📸 Demonstração
 
-> ⚠️ Em breve (deploy será realizado)
+<img width="1919" height="954" alt="image" src="https://github.com/user-attachments/assets/e5f73f2f-a4f3-4c91-9abf-f53f0ea06695" />
+<img width="1600" height="786" alt="WhatsApp Image 2026-09-01 at 12 33 07" src="https://github.com/user-attachments/assets/b9a48fc0-fbd3-4e1b-a9b7-57a3e26657fc" />
+<img width="1600" height="787" alt="WhatsApp Image 2026-09-01 at 12 33 38" src="https://github.com/user-attachments/assets/966ceb48-50d4-451a-9d6e-8234a9eca121" />
+
+
 
 ---
 
